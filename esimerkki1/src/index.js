@@ -5,6 +5,7 @@ const Hello = (props) => {
     const bornYear = () => {
         const yearNow = new Date().getFullYear()
         return yearNow - props.age
+
     }
 
     return (
