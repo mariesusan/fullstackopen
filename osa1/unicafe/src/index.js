@@ -38,22 +38,47 @@ const ProsentOfPositives = (props) => (
     </div>
 )
 
-const Statistics = (props) => (
-    <div>
-        <Display
-            text = "Good: "
-            value = {props.good}
-        /><br/>
-        <Display
-            text = "Neutral: "
-            value = {props.neutral}
-        /><br/>
-        <Display
-            text = "Bad: "
-            value = {props.bad}
-        /><br/>
-    </div>
-)
+const Statistics = (props) => {
+
+    if (props.good == 0 && props.neutral == 0 && props.bad == 0) {
+        return (
+            <div>
+                <p> No feedback given! </p>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+
+            <Display
+                text="Good: "
+                value={props.good}
+            /><br/>
+
+            <Display
+                text="Neutral: "
+                value={props.neutral}
+            /><br/>
+
+            <Display
+                text="Bad: "
+                value={props.bad}
+            /><br/>
+
+            <Total good={props.good} neutral={props.neutral} bad={props.bad}
+            /><br/>
+
+            <Average good={props.good} neutral={props.neutral} bad={props.bad}
+            /><br/>
+
+            <ProsentOfPositives good={props.good} neutral={props.neutral} bad={props.bad}
+            /><br/>
+
+        </div>
+    )
+
+}
 
 const App = () => {
     // tallenna napit omaan tilaansa
@@ -99,17 +124,7 @@ const App = () => {
                 text = "Statistics"
             /><br/>
 
-            <Statistics good = {good} neutral = {neutral} bad = {bad}
-            />
-
-            <Total good = {good} neutral = {neutral} bad = {bad}
-            /> <br/>
-
-            <Average good = {good} neutral = {neutral} bad = {bad}
-            /><br/>
-
-            <ProsentOfPositives good = {good} neutral = {neutral} bad = {bad}
-            /><br/>
+            <Statistics good = {good} neutral = {neutral} bad = {bad} />
 
         </div>
     )
