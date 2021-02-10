@@ -40,26 +40,49 @@ const Statistics = (props) => {
     }
 
     return (
-        <div>
-            <StatisticLine text = "Good: " value = {props.good}
-            /><br/>
 
-            <StatisticLine text = "Neutral: " value = {props.neutral}
-            /><br/>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <StatisticLine text = "Good: " value = {props.good}
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <StatisticLine text = "Neutral: " value = {props.neutral}
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <StatisticLine text = "Bad: " value = {props.bad}
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <StatisticLine text = "All: " value = {props.good + props.neutral + props.bad}
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <StatisticLine text = "Average: " value = {(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <StatisticLine text = "Positive: " value = {100 * props.good / (props.good + props.neutral + props.bad)}
+                    />
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-            <StatisticLine text = "Bad: " value = {props.bad}
-            /><br/>
 
-            <StatisticLine text = "All: " value = {props.good + props.neutral + props.bad}
-            /><br/>
-
-            <StatisticLine text = "Average: " value = {(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}
-            /><br/>
-
-            <StatisticLine text = "Positive: " value = {100 * props.good / (props.good + props.neutral + props.bad)}
-            /><br/>
-
-        </div>
     )
 
 }
