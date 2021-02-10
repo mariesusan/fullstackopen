@@ -38,6 +38,23 @@ const ProsentOfPositives = (props) => (
     </div>
 )
 
+const Statistics = (props) => (
+    <div>
+        <Display
+            text = "Good: "
+            value = {props.good}
+        /><br/>
+        <Display
+            text = "Neutral: "
+            value = {props.neutral}
+        /><br/>
+        <Display
+            text = "Bad: "
+            value = {props.bad}
+        /><br/>
+    </div>
+)
+
 const App = () => {
     // tallenna napit omaan tilaansa
     const [good, setGood] = useState(0)
@@ -62,37 +79,35 @@ const App = () => {
             <Title
                 text = "Give Feedback"
             /><br/>
+
             <Button
                 handleClick = {() => setToGood(good + 1)}
                 text = "Good"
             />
+
             <Button
                 handleClick = {() => setToNeutral(neutral + 1)}
                 text = "Neutral"
             />
+
             <Button
                 handleClick = {() => setToBad(bad + 1)}
                 text = "Bad"
             /><br/>
+
             <Title
                 text = "Statistics"
             /><br/>
-            <Display
-                text = "Good: "
-                value = {good}
-            /><br/>
-            <Display
-                text = "Neutral: "
-                value = {neutral}
-            /><br/>
-            <Display
-                text = "Bad: "
-                value = {bad}
-            /><br/>
+
+            <Statistics good = {good} neutral = {neutral} bad = {bad}
+            />
+
             <Total good = {good} neutral = {neutral} bad = {bad}
             /> <br/>
+
             <Average good = {good} neutral = {neutral} bad = {bad}
             /><br/>
+
             <ProsentOfPositives good = {good} neutral = {neutral} bad = {bad}
             /><br/>
 
