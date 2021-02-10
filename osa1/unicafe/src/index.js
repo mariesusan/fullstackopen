@@ -20,27 +20,18 @@ const Button = (props) => (
     </button>
 )
 
-const Total = (props) => (
+const StatisticLine = (props) => (
     <div>
-        All: {props.good + props.neutral + props.bad}
-    </div>
-)
-
-const Average = (props) => (
-    <div>
-        Average: {(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}
-    </div>
-)
-
-const ProsentOfPositives = (props) => (
-    <div>
-        Positive: {100 * props.good / (props.good + props.neutral + props.bad)} %
+        <Display
+            text = {props.text}
+            value = {props.value}
+        /><br/>
     </div>
 )
 
 const Statistics = (props) => {
 
-    if (props.good == 0 && props.neutral == 0 && props.bad == 0) {
+    if (props.good + props.neutral + props.bad == 0) {
         return (
             <div>
                 <p> No feedback given! </p>
@@ -50,29 +41,22 @@ const Statistics = (props) => {
 
     return (
         <div>
-
-            <Display
-                text="Good: "
-                value={props.good}
+            <StatisticLine text = "Good: " value = {props.good}
             /><br/>
 
-            <Display
-                text="Neutral: "
-                value={props.neutral}
+            <StatisticLine text = "Neutral: " value = {props.neutral}
             /><br/>
 
-            <Display
-                text="Bad: "
-                value={props.bad}
+            <StatisticLine text = "Bad: " value = {props.bad}
             /><br/>
 
-            <Total good={props.good} neutral={props.neutral} bad={props.bad}
+            <StatisticLine text = "All: " value = {props.good + props.neutral + props.bad}
             /><br/>
 
-            <Average good={props.good} neutral={props.neutral} bad={props.bad}
+            <StatisticLine text = "Average: " value = {(props.good * 1 + props.neutral * 0 + props.bad * -1) / (props.good + props.neutral + props.bad)}
             /><br/>
 
-            <ProsentOfPositives good={props.good} neutral={props.neutral} bad={props.bad}
+            <StatisticLine text = "Positive: " value = {100 * props.good / (props.good + props.neutral + props.bad)}
             /><br/>
 
         </div>
