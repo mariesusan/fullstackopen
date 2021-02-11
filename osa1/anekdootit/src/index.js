@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 
+const Display = (props) => (
+    <div>
+        {props.text1} {props.votes} {props.text2}
+    </div>
+)
+
 const Button = (props) => (
     <button onClick = {props.handleClick}>
         {props.text}
@@ -10,9 +16,14 @@ const Button = (props) => (
 
 const App = (props) => {
     const [selected, setSelected] = useState(0)
+    const [votes, vote] = useState(0)
 
     const setToSelected = (newValue) => {
         setSelected(newValue)
+    }
+
+    const setVoted = (newValue) => {
+        vote(newValue);
     }
 
     const random = () => {
@@ -22,6 +33,8 @@ const App = (props) => {
     return (
         <div>
             {props.anecdotes[selected]} <br/>
+            <Display text1 = "Has " votes = {votes} text2 = "votes"/>
+            <Button text = "Vote" handleClick = {() => setVoted(votes + 1)}/>
             <Button text = "Next anecdote" handleClick = {() => setToSelected(random)}/>
         </div>
     )
